@@ -22,17 +22,17 @@ const accentColors = [
 ];
 
 function initializeAccentColor() {
-    const existingColor = sessionStorage.getItem('accentColor');
-    const existingIndex = sessionStorage.getItem('accentColorIndex');
-    
+    const existingColor = localStorage.getItem('accentColor');
+    const existingIndex = localStorage.getItem('accentColorIndex');
+
     if (existingColor !== null && existingIndex !== null) {
-        document.documentElement.style.setProperty('--accent-color', existingColor);
+        document.body.style.setProperty('--accent-color', existingColor);
     } else {
         const randomIndex = Math.floor(Math.random() * accentColors.length);
         const selectedColor = accentColors[randomIndex];
-        document.documentElement.style.setProperty('--accent-color', selectedColor);
-        sessionStorage.setItem('accentColor', selectedColor);
-        sessionStorage.setItem('accentColorIndex', randomIndex);
+        document.body.style.setProperty('--accent-color', selectedColor);
+        localStorage.setItem('accentColor', selectedColor);
+        localStorage.setItem('accentColorIndex', randomIndex);
     }
 }
 
