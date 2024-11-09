@@ -2,7 +2,7 @@ const accentColors = [
     '#FF0000',
     '#FFFF00',
     '#00FF00',
-    '#00AAFF'
+    '#00FFFF'
 ];
 
 function initializeAccentColor() {
