@@ -23,14 +23,16 @@ const accentColors = [
 
 function initializeAccentColor() {
     const existingColor = sessionStorage.getItem('accentColor');
-    if (existingColor !== null) {
+    const existingIndex = sessionStorage.getItem('accentColorIndex');
+    
+    if (existingColor !== null && existingIndex !== null) {
         document.documentElement.style.setProperty('--accent-color', existingColor);
     } else {
         const randomIndex = Math.floor(Math.random() * accentColors.length);
         const selectedColor = accentColors[randomIndex];
         document.documentElement.style.setProperty('--accent-color', selectedColor);
-        window.sessionStorage.setItem('accentColor', selectedColor);
-        window.sessionStorage.setItem('accentColorIndex', randomIndex);
+        sessionStorage.setItem('accentColor', selectedColor);
+        sessionStorage.setItem('accentColorIndex', randomIndex);
     }
 }
 
