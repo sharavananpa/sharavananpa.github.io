@@ -1,20 +1,25 @@
 :root {
     --accent-color: #fff;
+    --half-white: #e0e0e0;
+    --grey: #555;
+    --dark-grey: #1a1a1a;
+    --extremely-dark-grey: #121212;
 }
 
 body {
-    color: #e0e0e0;
+    color: var(--half-white);
     display: flex;
     flex-direction: column;
     margin: auto;
-    background: #151515;
+    background: var(--extremely-dark-grey);
+    background-image: repeating-linear-gradient(to right, var(--dark-grey), var(--dark-grey) 1px, transparent 1px, transparent 30px), repeating-linear-gradient(to bottom, var(--dark-grey), var(--dark-grey) 1px, transparent 1px, transparent 30px);
     font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
     font-size: 1.25rem;
     line-height: 1.5;
     text-align: center;
     min-height: 100svh;
     max-width: 90%;
-    text-shadow: 0 1px 0 #555;
+    text-shadow: 0 1px 0 var(--grey);
 }
 
 @media screen and (min-width: 992px) {
@@ -46,4 +51,66 @@ footer {
     font-size: smaller;
     margin-top: auto;
     margin-bottom: 2rem;
+}
+
+
+.noise {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    width: 200%;
+    height: 200vh;
+    background: transparent url('./noise-transparent.png') repeat 0 0;
+    background-repeat: repeat;
+    animation: noise-animation .2s infinite;
+    opacity: 80%;
+    z-index: -9999;
+}
+
+@keyframes noise-animation {
+    0% {
+        transform: translate(0, 0)
+    }
+
+    10% {
+        transform: translate(-5%, -5%)
+    }
+
+    20% {
+        transform: translate(-10%, 5%)
+    }
+
+    30% {
+        transform: translate(5%, -10%)
+    }
+
+    40% {
+        transform: translate(-5%, 15%)
+    }
+
+    50% {
+        transform: translate(-10%, 5%)
+    }
+
+    60% {
+        transform: translate(15%, 0)
+    }
+
+    70% {
+        transform: translate(0, 10%)
+    }
+
+    80% {
+        transform: translate(-15%, 0)
+    }
+
+    90% {
+        transform: translate(10%, 5%)
+    }
+
+    100% {
+        transform: translate(5%, 0)
+    }
 }

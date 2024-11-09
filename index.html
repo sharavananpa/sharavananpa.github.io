@@ -7,57 +7,7 @@
   <meta name="description" content="A simple website built with plain HTML and CSS to host my thoughts. This index page compiles links to other sections.">
   <script src="script.js" defer></script>
   <link rel="stylesheet" href="style.css">
-  <style>
-    main {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    aside {
-      font-weight: lighter;
-    }
-
-    a {
-      font-weight: bolder;
-    }
-
-    footer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .button {
-      display: flex;
-      align-items: center;
-      appearance: none;
-      background-color: #e0e0e0;
-      border-radius: 1rem;
-      border-width: 0;
-      box-shadow: var(--accent-color) 0 -3px inset;
-      color: #151515;
-      cursor: pointer;
-      font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
-      font-weight: lighter;
-      font-size: smaller;
-      height: 2rem;
-      margin-top: 1rem;
-      padding: 0 1rem;
-      text-shadow: none;
-      transition: transform .1s ease-out;
-      user-select: none;
-      -webkit-user-select: none;
-      touch-action: none;
-    }
-
-    .button:hover {
-      transform: translateY(-3px);
-    }
-
-    .button:active {
-      transform: translateY(3px);
-    }
-  </style>
+  <link rel="stylesheet" href="index.css">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <title>Sharavanan</title>
 </head>
@@ -98,6 +48,7 @@
       button.addEventListener("touchstart", () => { }, { passive: true });
     });
   </script>
+  <div class="noise"></div>
 </body>
 
 </html>
