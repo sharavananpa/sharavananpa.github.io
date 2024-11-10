@@ -71,9 +71,9 @@ footer {
     width: var(--star-tail-length);
     height: var(--star-tail-height);
     color: var(--star-color);
-    background: linear-gradient(45deg, currentColor, transparent);
+    background: linear-gradient(45deg, var(--star-color), transparent);
     border-radius: 50%;
-    filter: drop-shadow(0 0 6px currentColor);
+    filter: drop-shadow(0 0 6px var(--star-color));
     transform: translate3d(104em, 0, 0);
     animation: fall var(--fall-duration) var(--fall-delay) linear infinite, tail-fade var(--tail-fade-duration) var(--fall-delay) ease-out infinite;
 }
@@ -127,7 +127,7 @@ footer {
     left: calc(var(--star-width) / -2);
     width: var(--star-width);
     height: 100%;
-    background: linear-gradient(45deg, transparent, currentColor, transparent);
+    background: linear-gradient(45deg, transparent, var(--star-color), transparent);
     border-radius: inherit;
     animation: blink 2s linear infinite;
 }
