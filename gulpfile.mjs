@@ -21,7 +21,7 @@ gulp.task('minify-html', () => {
       removeAttributeQuotes: true,
       removeComments: true,
       removeEmptyAttributes: true,
-      removeEmptyElements: true,
+      removeEmptyElements: false,
       removeScriptTypeAttributes: true,
       removeStyleLinkTypeAttributes: true,
       sortAttributes: true,

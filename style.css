@@ -62,7 +62,7 @@ footer {
     bottom: -50%;
     width: 200%;
     height: 200vh;
-    background: transparent url('./noise-transparent.png') repeat 0 0;
+    background: transparent url("https://misc.sharavananpa.dev/website/noise-transparent.png") repeat 0 0;
     background-repeat: repeat;
     animation: noise-animation .2s infinite;
     opacity: 80%;
