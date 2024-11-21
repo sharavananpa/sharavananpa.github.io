@@ -56,6 +56,11 @@ gulp.task('minify-svgs', () => {
     .pipe(gulp.dest('dist'));
 });
 
+gulp.task('copy-png', () => {
+  return gulp.src('*.png', { base: '.' })
+    .pipe(gulp.dest('dist'));
+});
+
 gulp.task('revreplace', () => {
   const manifest = gulp.src('dist/rev-manifest.json');
 
@@ -64,4 +69,4 @@ gulp.task('revreplace', () => {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('default', gulp.series('clean', 'minify-html', 'minify-css', 'minify-js', 'minify-svgs', 'revreplace'));
+gulp.task('default', gulp.series('clean', 'minify-html', 'minify-css', 'minify-js', 'minify-svgs', 'copy-png', 'revreplace'));

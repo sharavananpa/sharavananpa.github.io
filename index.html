@@ -8,9 +8,12 @@
   <script src="script.js" defer></script>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="index.css">
-  <link id="favicon" rel="icon" type="image/svg+xml" href="">
-  <link rel="icon" type="image/png" href="favicon.png">
   <title>Sharavanan</title>
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link id="favicon" rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
 </head>
 
 <body>
@@ -29,23 +32,10 @@
     <p><a href="contact">How to reach me?</a></p>
   </main>
   <footer>
-    <button class="button" onclick="setRandomAccentColor()">Change accent</button>
+    <button class="button" onclick="setAccentColor()">Change accent</button>
     <button class="button" onclick="window.open('https://lite.sharavananpa.dev/', '_blank')">Lite version /(^.^/)</button>
   </footer>
   <script>
-    function setRandomAccentColor() {
-      var randomIndex = 0;
-      const existingIndex = localStorage.getItem('accentColorIndex');
-      if (existingIndex !== null) {
-        randomIndex = (parseInt(existingIndex) + 1) % accentColors.length;
-      }
-      const selectedColor = accentColors[randomIndex];
-      document.body.style.setProperty('--accent-color', selectedColor);
-      changeFavicon(selectedColor);
-      localStorage.setItem('accentColor', selectedColor);
-      localStorage.setItem('accentColorIndex', randomIndex);
-    }
-
     [...document.getElementsByClassName("button")].forEach(button => {
       button.addEventListener("touchstart", () => { }, { passive: true });
     });

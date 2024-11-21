@@ -4,6 +4,8 @@ npm install gulp gulp-htmlmin gulp-clean-css gulp-uglify gulp-minify-inline gulp
 gulp
 
 mv CNAME dist/CNAME
+mv site.webmanifest dist/site.webmanifest
+mv favicon.ico dist/favicon.ico
 rm *
 mv -v ./dist/* .
 rm dist
