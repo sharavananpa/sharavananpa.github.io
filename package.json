@@ -1,0 +1,51 @@
+{
+	"name": "sharavananpa.dev",
+	"version": "1.0.0",
+	"description": "A simple website built with 11ty to host my thoughts.",
+	"type": "module",
+	"scripts": {
+		"build": "npx @11ty/eleventy",
+		"build-nocolor": "cross-env NODE_DISABLE_COLORS=1 npx @11ty/eleventy",
+		"build-ghpages": "npx @11ty/eleventy --pathprefix=/",
+		"start": "npx @11ty/eleventy --serve --quiet",
+		"start-ghpages": "npx @11ty/eleventy --pathprefix=/ --serve --quiet",
+		"debug": "cross-env DEBUG=Eleventy* npx @11ty/eleventy",
+		"debugstart": "cross-env DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
+		"benchmark": "cross-env DEBUG=Eleventy:Benchmark* npx @11ty/eleventy"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/11ty/eleventy-base-blog.git"
+	},
+	"author": {
+		"name": "Sharavanan Balasundaravel",
+		"email": "sharavananpa@gmail.com",
+		"url": "https://sharavananpa.dev/"
+	},
+	"license": "MIT",
+	"engines": {
+		"node": ">=18"
+	},
+	"devDependencies": {
+		"@11ty/eleventy": "^3.1.1",
+		"@11ty/eleventy-img": "^6.0.4",
+		"@11ty/eleventy-navigation": "^1.0.4",
+		"@11ty/eleventy-plugin-rss": "^2.0.4",
+		"@11ty/eleventy-plugin-syntaxhighlight": "github:sharavananpa/eleventy-plugin-syntaxhighlight",
+		"clean-css": "^5.3.3",
+		"cross-env": "^7.0.3",
+		"html-minifier-terser": "^7.2.0",
+		"luxon": "^3.6.1",
+		"markdown-it": "^14.1.0",
+		"markdown-it-attrs": "^4.3.1",
+		"markdown-it-bracketed-spans": "^1.0.1",
+		"markdown-it-link-attributes": "^4.0.1",
+		"prismjs": "^1.30.0",
+		"terser": "^5.43.1",
+		"zod": "^3.24.4",
+		"zod-validation-error": "^3.4.1"
+	},
+	"dependencies": {
+		"@zachleat/heading-anchors": "^1.0.3"
+	}
+}

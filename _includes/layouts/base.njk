@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="{{ metadata.language }}">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>{{ title or metadata.title }}</title>
+		<meta name="description" content="{{ description or metadata.description }}">
+		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
+
+		{#- Uncomment this if you’d like folks to know that you used Eleventy to build your site!  #}
+		<meta name="generator" content="{{ eleventy.generator }}">
+
+		{#-
+		Plain-text bundles are provided via the `eleventy-plugin-bundle` plugin:
+		1. CSS:
+			* Add to a per-page bundle using `{% css %}{% endcss %}`
+			* Retrieve bundle content using `{% getBundle "css" %}` or `{% getBundleFileUrl "css" %}`
+		2. Or for JavaScript:
+			* Add to a per-page bundle using `{% js %}{% endjs %}`
+			* Retrieve via `{% getBundle "js" %}` or `{% getBundleFileUrl "js" %}`
+		3. Learn more: https://github.com/11ty/eleventy-plugin-bundle
+		#}
+
+		{#- Add CSS to the bundle #}
+		{# <style>/* This is an arbitrary CSS string added to the bundle */</style> #}
+
+		{#- Add the contents of a file to the bundle #}
+		<style>{% include "css/index.css" %}</style>
+
+		{#- Or you can add from node_modules #}
+		{# <style>{% include "node_modules/something.css" %}</style> #}
+
+		{#- Render the CSS bundle using inlined CSS (for the fastest site performance in production) #}
+		{# <style>{% getBundle "css" %}</style> #}
+
+		{#- Renders the CSS bundle using a separate file, if you can't set CSP directive style-src: 'unsafe-inline' #}
+		<link rel="stylesheet" href="{% getBundleFileUrl "css" %}">
+
+		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96">
+		<link id="favicon" rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
+		<link rel="shortcut icon" href="/favicon/favicon.ico">
+		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+
+		{#- Add the heading-anchors web component to the JavaScript bundle #}
+		<script type="module">{% include "node_modules/@zachleat/heading-anchors/heading-anchors.js" %}</script>
+		<script type="module">{% include "js/script.js" %}</script>
+
+	</head>
+	<body>
+		<a href="#main" id="skip-link" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<div class="home-link">
+				{% if page.url != '/' %}
+					<a href="/">{{ metadata.username }}</a>
+				{% else %}
+					<span class="ascii-face"></span>
+				{% endif %}
+			</div>
+
+
+			{#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
+			<nav>
+				<h2 class="visually-hidden">Top level navigation menu</h2>
+				<ul class="nav">
+				{%- for entry in collections.all | eleventyNavigation %}
+					<li class="nav-item"><a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a></li>
+				{%- endfor %}
+				</ul>
+			</nav>
+		</header>
+
+		<main id="main">
+			<heading-anchors selector="h2">
+				{{ content | safe }}
+			</heading-anchors>
+		</main>
+
+		<footer>
+			<p>
+				<em>
+					<a href="/feed/feed.xml" target="_blank">Subscribe</a>.
+					Send me an <a href="mailto:joust_kernel.2j@icloud.com?subject=Hello!&body=Thanks%20for%20reaching%20out!%20%0A%0APlease%20note%20this%20is%20an%20alias%2C%20but%20your%20email%20will%20land%20directly%20in%20my%20inbox.%20I'll%20get%20back%20to%20you%20as%20soon%20as%20I%20can.%0A%0A(Feel%20free%20to%20remove%20this...)">email</a>.
+					Spread peace!
+				</em>
+			</p>
+		</footer>
+
+		<!-- This page `{{ page.url }}` was built on {% currentBuildDate %} -->
+		<script type="module" src="{% getBundleFileUrl "js" %}"></script>
+	</body>
+</html>

@@ -1,0 +1,14 @@
+---js
+const eleventyNavigation = {
+	key: "Writings",
+	order: 1
+};
+const eleventyComputed = {
+	title: "{{ eleventyNavigation.key }}",
+	description: "This page contains the blog writings of {{ metadata.author.name }} (@{{ metadata.username }})."
+};
+---
+<h1>Writings</h1>
+
+{% set postslist = collections.posts %}
+{% include "postslist.njk" %}

@@ -1,0 +1,21 @@
+---js
+const eleventyComputed = {
+	title: "Gallery",
+	description: "This page contains pictures relevant to {{ metadata.author.name }} (@{{ metadata.username }})."
+};
+---
+<h1>Gallery</h1>
+
+{% for image in gallery %}
+		<h2>{{ image.title }}</h2>
+		<div>
+			<span class="monospace-font smaller-font">{{ image.date }}</span>
+			<br>
+			<span class="small-font">{{ image.location }}</span>
+			<br>
+			{% if image.author != "Sharavanan" %}
+			<span class="small-font">Photographed by {{ image.author }}</span>
+			{% endif %}
+			<img class="gallery-img" src="./{{ image.src }}" alt="{{ image.alt }}">
+		</div>
+{% endfor %}

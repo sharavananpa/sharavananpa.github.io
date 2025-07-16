@@ -1,0 +1,95 @@
+---js
+const numberOfLatestPostsToShow = 3;
+---
+
+{% css %}
+
+.introduction p {
+    font-weight: lighter;
+}
+
+.introduction a {
+    font-weight: bolder;
+}
+
+.footer-buttons {
+	margin-top: 2em;
+	font-size: 0.9em;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    appearance: none;
+    background-color: var(--color-gray-90);
+    border-radius: 1rem;
+    border-width: 0;
+    box-shadow: var(--accent-color) 0 -3px inset;
+    color: var(--background-color);
+    cursor: pointer;
+    font-family: var(--font-family-monospace);
+    font-weight: lighter;
+    font-size: smaller;
+    height: 1.8rem;
+    margin-top: 1rem;
+    padding: 0 1rem;
+    text-shadow: none;
+    transition: transform .1s ease-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+}
+
+.button:active {
+    transform: translateY(3px);
+}
+
+{% endcss %}
+
+{% js %}
+	const asciiFaces = [String.raw`ᕕ(⌐■_■)ᕗ ♪♬`, String.raw`ᕙ(⇀‸↼‶)ᕗ`, String.raw`¯\_(ツ)_/¯`, String.raw`(⋟﹏⋞)`, String.raw`(♥_♥)`, String.raw`(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧`, String.raw`ヾ(⌐■_■)ノ♪`, String.raw`(つ◉益◉)つ`, String.raw`(╯°□°）╯︵ ┻━┻`];
+	const random = Math.floor(Math.random() * asciiFaces.length);
+	document.getElementsByClassName("ascii-face")[0].innerText = asciiFaces[random];
+{% endjs %}
+
+<div class="introduction">
+	<h1>Hi, this is Sharavanan!</h1>
+	<p>
+		I'm from down <a href="https://en.wikipedia.org/wiki/Tamil_Nadu" target="_blank" rel="noopener noreferrer">south of India</a>.
+		<br>
+		I build software and make music.
+	</p>
+</div>
+
+{# <hr> #}
+
+{% set postsCount = collections.posts | length %}
+{% set latestPostsCount = postsCount | min(numberOfLatestPostsToShow) %}
+<h2 data-ha-exclude>Last {{ latestPostsCount }} post{% if latestPostsCount != 1 %}s{% endif %}...</h2>
+
+{% set postslist = collections.posts | head(-1 * numberOfLatestPostsToShow) %}
+{% set postslistCounter = postsCount %}
+{% include "postslist.njk" %}
+
+{% set morePosts = postsCount - numberOfLatestPostsToShow %}
+{% if morePosts > 0 %}
+<p>{{ morePosts }} more post{% if morePosts != 1 %}s{% endif %} can be found on the <a href="writings.njk">writings page</a>.</p>
+{% endif %}
+
+{# <hr> #}
+
+<div class="footer-buttons">
+	<button class="button change-accent">Change accent</button>
+	<button class="button" onclick="window.open('https://lite.sharavananpa.dev/', '_blank')">Lite version /(^.^/)</button>
+</div>
+
+{% js %}
+	[...document.getElementsByClassName("button")].forEach(button => {
+		button.addEventListener("touchstart", () => { }, { passive: true });
+	});
+	document.getElementsByClassName("change-accent")[0].addEventListener("click", setAccentColor);
+{% endjs %}

@@ -1,0 +1,14 @@
+---js
+const eleventyComputed = {
+	title: "Tags",
+	description: "This page contains all the tags of posts written by {{ metadata.author.name }} (@{{ metadata.username }})."
+};
+---
+<h1>All Tags</h1>
+
+<ul class="post-metadata">
+{% for tag in collections | getKeys | filterTagList | sortAlphabetically %}
+	{% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+	<li style="margin-bottom: 1em; margin-right: 1em; font-size: 1.3em;"><a class="post-tag" href="{{ tagUrl }}">{{ tag }}</a></li>
+{% endfor %}
+</ul>
